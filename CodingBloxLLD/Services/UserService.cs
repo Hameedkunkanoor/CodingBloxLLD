@@ -1,6 +1,9 @@
-﻿using CodingBloxLLD.Models;
+﻿using CodingBloxLLD.Exceptions;
+using CodingBloxLLD.Models;
+using CodingBloxLLD.Repository;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,22 +12,25 @@ namespace CodingBloxLLD.Services
 {
     public class UserService
     {
-        Dictionary<string, User> _users = new Dictionary<string, User>();
-        public Dictionary<string, User> Users
+        UserRepository userRepository;
+
+        public UserService()
         {
-            get => _users;
-            set => _users = value;
+            userRepository = UserRepository.Instance();
         }
-        public void AddUser(User user)
+
+        public void CreateUser(User user)
         {
-            Users.Add(user.Name, user);
-        }
-        public User GetUser(string userName)
-        {
-            if (Users.ContainsKey(userName))
-                return Users[userName];
-            else
-                return default(User);
+            try
+            {
+                userRepository.AddUser(user);
+            }
+
+            catch(UserExistsException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            
         }
     }
 }

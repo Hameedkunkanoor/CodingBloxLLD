@@ -11,7 +11,7 @@ namespace CodingBloxLLD.Utils
         static int _id;
         static GenerateId()
         {
-            _id = 0;
+            _id = 1;
         }
         public static int GetId()
         {

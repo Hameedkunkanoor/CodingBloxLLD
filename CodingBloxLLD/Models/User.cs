@@ -11,5 +11,12 @@ namespace CodingBloxLLD.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public int Score { get; set; }
+
+        public User(string name, string email, int score)
+        {
+            Name = name;
+            Email = email;
+            Score = score;
+        }
     }
 }

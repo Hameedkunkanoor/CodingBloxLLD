@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodingBloxLLD.Enums
 {
-    public enum QuestionTypeEnum
+    public enum QuestionLevelEnum
     {
         Low,
         Medium,

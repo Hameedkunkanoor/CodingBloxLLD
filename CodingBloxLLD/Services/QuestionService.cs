@@ -1,5 +1,6 @@
 ﻿using CodingBloxLLD.Enums;
 using CodingBloxLLD.Models;
+using CodingBloxLLD.Repository;
 using CodingBloxLLD.Utils;
 using System;
 using System.Collections.Generic;
@@ -11,24 +12,26 @@ namespace CodingBloxLLD.Services
 {
     public class QuestionService
     {
-        List<Question> _questions = new List<Question>();
-        public List<Question> Questions
+        QuestionRepository questionRepository;
+
+        public QuestionService()
         {
-            get => _questions;
-            set => _questions = value;
+            questionRepository = QuestionRepository.Instance();
         }
-        public void AddQuestion(Question question)
+
+        public void CreateQuestion(Question question)
         {
-            question.QuestionId = GenerateId.GetId();
-            Questions.Add(question);
+             questionRepository.AddQuestion(question);
         }
-        public IEnumerable<Question> GetQuestions(QuestionTypeEnum? typeEnum)
+        public void ListQuestion(Question question)
         {
-            if(typeEnum.Equals(QuestionTypeEnum.All))
-            {
-                return Questions;
-            }
-            return Questions.Where(x => x.Type == typeEnum);
+            questionRepository.AddQuestion(question);
         }
+        public IEnumerable<Question> ListQuestion(QuestionLevelEnum typeEnum)
+        {
+            return questionRepository.GetQuestions(typeEnum);
+        }
+
+
     }
 }

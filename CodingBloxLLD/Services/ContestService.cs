@@ -1,5 +1,6 @@
 ﻿using CodingBloxLLD.Enums;
 using CodingBloxLLD.Models;
+using CodingBloxLLD.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,35 +11,20 @@ namespace CodingBloxLLD.Services
 {
     public class ContestService  
     {
-     /*   Dictionary<string, Dictionary<string,Contest>> _users = new Dictionary<string, User>();
-        public Dictionary<string, User> Users
+
+        ContestRepository contestRepository;
+        UserRepository userRepository;
+        public ContestService()
         {
-            get => _users;
-            set => _users = value;*/
-        
-        List<Contest> _contests = new List<Contest>();
-        public List<Contest> Contests
-        {
-            get => _contests;
-            set => _contests = value;
+            contestRepository = ContestRepository.Instance();
+            userRepository = UserRepository.Instance();
         }
-        public void AddContest(Contest contest)
+        public void CreateContest(Contest contest)
         {
-            Contests.Add(contest);
-        }
-        public IEnumerable<Contest> GetContests(ContestLevelEnum contestLevel)
-        {
-            if (contestLevel.Equals(ContestLevelEnum.All))
-            {
-                return Contests;
-            }
-            return Contests.Where(x => x.ContestLevel == contestLevel);
-        }
-        public bool AttendContest(int contestId,string userName)
-        {
-           Contests.Where(x => x.Id == contestId)
-                .FirstOrDefault()
-                .Attendees.Add(UserService);
+            if (!userRepository.Users.TryGetValue(contest.CreaterName,out User user))
+                   throw new Exception("User not found");
+            contest.Attendees.Add(user);
+            contestRepository.AddContest(contest);
         }
 
     }
