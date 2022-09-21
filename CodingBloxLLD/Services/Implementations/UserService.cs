@@ -33,5 +33,9 @@ namespace CodingBloxLLD.Services.Implementations
             }
 
         }
+        public IEnumerable<User> LeaderBoard()
+        {
+           return userRepository.Users.Values.OrderByDescending(user => user.Score);
+        }
     }
 }

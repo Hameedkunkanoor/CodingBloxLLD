@@ -49,7 +49,9 @@ namespace CodingBloxLLD.Services.Implementations
 
         public void RunContest(int contestId, string creatorUserName)
         {
-            throw new NotImplementedException();
+            if (contestRepository.Contests.Where(contest => contest.Id == contestId).Count() == 0)
+                throw new ContestNotFoundException("Contest not found");
+            contestRepository.RunContest(contestId, creatorUserName);
         }
     }
 }

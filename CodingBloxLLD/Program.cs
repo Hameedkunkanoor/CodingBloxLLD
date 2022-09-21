@@ -19,3 +19,5 @@ contestService.CreateContest(new Contest("Endgame", ContestLevelEnum.Low, "Wanda
 contestService.ListContest(ContestLevelEnum.High);
 
 contestService.AttendContest(1, "Loki");
+
+userService.LeaderBoard();

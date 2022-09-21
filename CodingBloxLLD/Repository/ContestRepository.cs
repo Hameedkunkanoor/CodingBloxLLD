@@ -46,5 +46,9 @@ namespace CodingBloxLLD.Repository
             Contests.FirstOrDefault(x => x.Id == contestId)
                 .Attendees.Add(userRepository.Users[userName]);
         }
+        public void RunContest(int contestId, string userName)
+        {
+            Contests.FirstOrDefault(x => x.Id == contestId).ContestStatus = ContestStatusEnum.Running;
+        }
     }
 }
