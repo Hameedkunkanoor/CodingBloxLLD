@@ -13,3 +13,5 @@ questionService.CreateQuestion(new Question("q4", QuestionLevelEnum.High, 15));
 questionService.ListQuestion(QuestionLevelEnum.Low);
 ContestService contestService = new ContestService();
 contestService.CreateContest(new Contest("Endgame", ContestLevelEnum.Low, "Wanda"));
+
+contestService.ListContest(ContestLevelEnum.High);

@@ -28,5 +28,9 @@ namespace CodingBloxLLD.Services.Implementations
             contestRepository.AddContest(contest);
         }
 
+        public IEnumerable<Contest> ListContest(ContestLevelEnum typeEnum)
+        {
+            return contestRepository.GetContests(typeEnum);
+        }
     }
 }

@@ -36,11 +36,6 @@ namespace CodingBloxLLD.Repository
             }
             return Contests.Where(x => x.ContestLevel == contestLevel);
         }
-      /*  public bool AttendContest(int contestId, string userName)
-        {
-            Contests.Where(x => x.Id == contestId)
-                 .FirstOrDefault()
-                 .Attendees.Add(QuestionRepository.Instance.add);
-        }*/
+     
     }
 }
