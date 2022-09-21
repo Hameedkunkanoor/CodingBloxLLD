@@ -1,6 +1,7 @@
 ﻿using CodingBloxLLD.Exceptions;
 using CodingBloxLLD.Models;
 using CodingBloxLLD.Repository;
+using CodingBloxLLD.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CodingBloxLLD.Services.Implementations
 {
-    public class UserService
+    public class UserService : IUserService
     {
         UserRepository userRepository;
 
