@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodingBloxLLD.Services
+namespace CodingBloxLLD.Services.Implementations
 {
     public class UserService
     {
@@ -26,11 +26,11 @@ namespace CodingBloxLLD.Services
                 userRepository.AddUser(user);
             }
 
-            catch(UserExistsException ex)
+            catch (UserExistsException ex)
             {
                 Debug.WriteLine(ex.Message);
             }
-            
+
         }
     }
 }

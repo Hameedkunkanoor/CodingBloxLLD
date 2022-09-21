@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodingBloxLLD.Services
+namespace CodingBloxLLD.Services.Implementations
 {
     public class QuestionService
     {
@@ -21,7 +21,7 @@ namespace CodingBloxLLD.Services
 
         public void CreateQuestion(Question question)
         {
-             questionRepository.AddQuestion(question);
+            questionRepository.AddQuestion(question);
         }
         public void ListQuestion(Question question)
         {

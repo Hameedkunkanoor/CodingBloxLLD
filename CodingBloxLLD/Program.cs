@@ -1,6 +1,6 @@
 ﻿using CodingBloxLLD.Enums;
 using CodingBloxLLD.Models;
-using CodingBloxLLD.Services;
+using CodingBloxLLD.Services.Implementations;
 
 UserService userService = new UserService();
 userService.CreateUser(new User("IronMan", "iron@gmail.com", 1500));
