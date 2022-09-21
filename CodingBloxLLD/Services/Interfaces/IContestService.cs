@@ -12,6 +12,7 @@ namespace CodingBloxLLD.Services.Interfaces
     {
         void CreateContest(Contest contest);
         IEnumerable<Contest> ListContest(ContestLevelEnum typeEnum);
-        
+        void AttendContest(int contestId,string userName);
+        void RunContest(int contestId, string creatorUserName);
     }
 }

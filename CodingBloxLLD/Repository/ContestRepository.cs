@@ -16,6 +16,11 @@ namespace CodingBloxLLD.Repository
             get => _contests;
             set => _contests = value;
         }
+        UserRepository userRepository;
+        public ContestRepository()
+        {
+            userRepository = UserRepository.Instance();
+        }
         private static ContestRepository contestRepository;
 
         public static ContestRepository Instance()
@@ -36,6 +41,10 @@ namespace CodingBloxLLD.Repository
             }
             return Contests.Where(x => x.ContestLevel == contestLevel);
         }
-     
+        public void AddAttendee(int contestId, string userName)
+        {
+            Contests.FirstOrDefault(x => x.Id == contestId)
+                .Attendees.Add(userRepository.Users[userName]);
+        }
     }
 }
